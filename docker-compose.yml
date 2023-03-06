@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  app:
+    image: local/indiana-php-apache-bullseye-dev:0.0.3
+    hostname: laravel-test
+    container_name: laravel-test
+    restart: always
+    volumes:
+      - ./:/var/www/html
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "8080:80"
+    logging:
+      driver: json-file
+      options:
+        max-size: "100M"
+        max-file: "5"
